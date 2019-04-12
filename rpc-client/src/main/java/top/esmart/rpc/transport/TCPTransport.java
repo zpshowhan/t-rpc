@@ -32,23 +32,42 @@ public class TCPTransport {
             throw new RuntimeException("连接建立失败");
         }
     }
+    //发送请求
     public Object send(RPCRequest rpcRequest){
         Socket socket = newSocket();
+        ObjectOutputStream objectOutputStream = null;
+        ObjectInputStream objectInputStream = null;
         //发送请求到服务端
         try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+        	 //拿到socket输出流-用于把数据写入socket
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            
+            objectOutputStream.writeUTF("1234567890");
+            //写入序列化的对象
             objectOutputStream.writeObject(rpcRequest);
             objectOutputStream.flush();
-            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
             Object result = objectInputStream.readObject();
-            objectInputStream.close();
-            objectOutputStream.close();
             return result;
 
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("发起远程调用异常",e);
         } finally {
+        	if(objectOutputStream!=null) {
+        		try {
+					objectOutputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+        	}
+        	if(objectInputStream!=null) {
+        		try {
+        			objectInputStream.close();
+        		} catch (IOException e) {
+        			e.printStackTrace();
+        		}
+        	}
             try {
                 socket.close();
             } catch (IOException e) {

@@ -37,12 +37,13 @@ public class ProcessorHandler implements Runnable {
         try {
         	//接收socket输入流-用于拿到套接字中的数据
             objectInputStream = new ObjectInputStream(socket.getInputStream());
+            System.out.println(objectInputStream.readUTF());
             //读取输入流，并反序列化成对象
             RPCRequest rpcRequest = (RPCRequest) objectInputStream.readObject();
             //通过反射执行逻辑
             Object result = invoke(rpcRequest);
 
-            //拿到socket输出流-用于返回数据
+            //拿到socket输出流-用于把数据写入socket
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             //序列化对象
             objectOutputStream.writeObject(result);
