@@ -8,4 +8,13 @@
   <artifactId>rpc-core</artifactId>
   <name>rpc-core</name>
   <description>rpc核心工具包</description>
+  <dependencies>
+	<!-- 引入spring-context包  继承此模块的会默认引入-->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>5.1.5.RELEASE</version>
+	</dependency>
+  
+  </dependencies>
 </project>

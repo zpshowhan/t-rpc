@@ -1,5 +1,7 @@
 package top.esmart.rpc.impl;
 
+import org.springframework.stereotype.Service;
+
 import top.esmart.model.User;
 import top.esmart.service.InfoService;
 
@@ -10,6 +12,7 @@ import top.esmart.service.InfoService;
 * @author Thinkpad 
 * @version 1.0 2019年4月12日 下午4:06:15
  */
+@Service
 public class InfoServiceImpl implements InfoService {
 
 	@Override
