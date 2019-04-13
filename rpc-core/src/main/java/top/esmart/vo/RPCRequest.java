@@ -1,12 +1,12 @@
 package top.esmart.vo;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * 
 * @ClassName: RPCRequest 
 * @Description: TODO rpc请求类
-* @Company:方正软件
 * @author Thinkpad 
 * @version 1.0 2019年4月12日 下午2:50:31
  */
@@ -43,4 +43,11 @@ public class RPCRequest implements Serializable{
     public void setParameters(Object[] parameters) {
         this.parameters = parameters;
     }
+
+	@Override
+	public String toString() {
+		return "RPCRequest [className=" + className + ", methodName=" + methodName + ", parameters="
+				+ Arrays.toString(parameters) + "]";
+	}
+    
 }

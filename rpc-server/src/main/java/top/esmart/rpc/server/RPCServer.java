@@ -14,7 +14,6 @@ import top.esmart.service.InfoService;
  * 
 * @ClassName: RPCServer 
 * @Description: TODO rpc服务端 
-* @Company:方正软件
 * @author Thinkpad 
 * @version 1.0 2019年4月12日 下午3:43:47
  */
@@ -24,6 +23,7 @@ public class RPCServer {
 		
 		InfoService service = new InfoServiceImpl();
 		RPCServer server = new RPCServer();
+		//发布服务
 		server.publisher(service, 8888);
 		
 	}
@@ -41,7 +41,7 @@ public class RPCServer {
             //循环监听-基于bio阻塞方式实现
             while (true){
                 Socket socket = serverSocket.accept();
-                
+                //把连接交给任务处理
                 executorService.submit(new ProcessorHandler(socket,service));
             }
 

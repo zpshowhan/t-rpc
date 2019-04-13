@@ -13,7 +13,6 @@ import top.esmart.vo.RPCRequest;
  * 
 * @ClassName: ProcessorHandler 
 * @Description: TODO 处理客户端请求 
-* @Company:方正软件
 * @author Thinkpad 
 * @version 1.0 2019年4月12日 下午3:44:04
  */
