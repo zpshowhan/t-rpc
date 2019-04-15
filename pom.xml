@@ -10,5 +10,7 @@
   	<module>rpc-core</module>
   	<module>rpc-server</module>
   	<module>rpc-client</module>
+  	<module>rpc-mina-server</module>
+  <module>rpc-mina-client</module>
   </modules>
 </project>
